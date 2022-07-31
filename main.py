@@ -12,12 +12,13 @@ def download_content(url, filename):
 
 if __name__ == '__main__':
     start = time.time()
-    download_content('https://source.unsplash.com/user/c_v_r/100x100', 'f.png')
+    for i in range(10):
+        download_content('https://source.unsplash.com/user/c_v_r/100x100', f'{i}.png')
     end = time.time()
-    print(f'TIME TAKEN TO DOWNLOAD 1 IMAGE: {end - start}')
+    print(f'TIME TAKEN TO DOWNLOAD 10 IMAGES WITHOUT MULTI THREADING: {end - start}')
     start = time.time()
     for i in range(10):
         thread = threading.Thread(target=download_content, args=['https://source.unsplash.com/user/c_v_r/100x100', f'{i}.png'])
         thread.start()
     end = time.time()
-    print(f'TIME TAKEN TO DOWNLOAD 10 IMAGE: {end - start}')
+    print(f'TIME TAKEN TO DOWNLOAD 10 IMAGES USING MULTI THREADING: {end - start}')
