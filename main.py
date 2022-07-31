@@ -16,6 +16,7 @@ if __name__ == '__main__':
         download_content('https://source.unsplash.com/user/c_v_r/100x100', f'{i}.png')
     end = time.time()
     print(f'TIME TAKEN TO DOWNLOAD 10 IMAGES WITHOUT MULTI THREADING: {end - start}')
+
     start = time.time()
     for i in range(10):
         thread = threading.Thread(target=download_content, args=['https://source.unsplash.com/user/c_v_r/100x100', f'{i}.png'])
